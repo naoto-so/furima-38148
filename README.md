@@ -13,6 +13,10 @@
 | first_name_kana    | string | null: false               |
 | date_of_birth      | date   | null: false               |
 
+### Association
+- has_many :items
+- has_many :orders
+
 ## itemsテーブル
 
 | Column             | Type       | Options                        |
@@ -25,22 +29,35 @@
 | send_area_id       | integer    | null: false                    |
 | send_day_id        | integer    | null: false                    |
 | price              | integer    | null: false                    |
-| user_id            | references | null: false, foreign_key: true |
+| user               | references | null: false, foreign_key: true |
+
+### Association
+- belongs_to :user
+- has_one :order
 
 ## ordersテーブル
 
-| Column         | Type       | Options                        |
-| -------------- | ---------- | ------------------------------ |
-| user_id        | references | null: false, foreign_key: true |
-| item_id        | references | null: false, foreign_key: true |
+| Column | Type       | Options                        |
+| ------ | ---------- | ------------------------------ |
+| user   | references | null: false, foreign_key: true |
+| item   | references | null: false, foreign_key: true |
+
+### Association
+- belongs_to :user
+- belongs_to :item
+- has_one :address
 
 ## addressesテーブル
 
-| Column         | Type       | Options     |
-| -------------- | ---------- | ----------- |
-| post_number    | integer    | null: false |
-| prefecture_id  | integer    | null: false |
-| city           | string     | null: false |
-| address_number | integer    | null: false |
-| building       | integer    |             |
-| tel            | integer    | null: false |
+| Column         | Type       | Options                        |
+| -------------- | ---------- | ------------------------------ |
+| post_number    | string     | null: false                    |
+| send_area_id   | integer    | null: false                    |
+| city           | string     | null: false                    |
+| address_number | string     | null: false                    |
+| building       | string     |                                |
+| tel            | string     | null: false                    |
+| order          | references | null: false, foreign_key: true |
+
+### Association
+- belongs_to :order
