@@ -34,6 +34,8 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'factory_bot_rails'
   gem 'faker'
+  gem 'faker-japanese'
+  gem 'gimei'
 end
 
 group :development do
@@ -58,3 +60,5 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'devise'
+
+gem 'pry-rails'
