@@ -23,12 +23,12 @@ RSpec.describe OrderAddress, type: :model do
       it 'post_numberが空だと保存できないこと' do
         @order_address.post_number = ''
         @order_address.valid?
-        expect(@order_address.errors.full_messages).to include("Post number is invalid. Include hyphen(-)")
+        expect(@order_address.errors.full_messages).to include('Post number is invalid. Include hyphen(-)')
       end
       it 'post_numberがハイフンを含んでないと保存できないこと' do
         @order_address.post_number = '1234567'
         @order_address.valid?
-        expect(@order_address.errors.full_messages).to include("Post number is invalid. Include hyphen(-)")
+        expect(@order_address.errors.full_messages).to include('Post number is invalid. Include hyphen(-)')
       end
       it 'send_area_idを選択していないと保存できないこと' do
         @order_address.send_area_id = '1'
@@ -53,7 +53,7 @@ RSpec.describe OrderAddress, type: :model do
       it 'telがハイフンを含んでいると保存できないこと' do
         @order_address.tel = '000-0000-0000'
         @order_address.valid?
-        expect(@order_address.errors.full_messages).to include("Tel is invalid")
+        expect(@order_address.errors.full_messages).to include('Tel is invalid')
       end
       it 'userが紐付いていないと保存できないこと' do
         @order_address.user_id = nil
